@@ -5,35 +5,39 @@ const router = new VueRouter({
     mode:'history',
     routes:[
         {
+            path:'/index',
+            name:'Index',
+            component:()=>import('../view/index/Index'),
+            children:[
+                {path:'select',component:()=>import('../view/index/tapbar/bars/Select')},
+                {path:'happy',component:()=>import('../view/index/tapbar/bars/Happy')},
+                {path:'shopping',component:()=>import('../view/index/tapbar/bars/Shopping')},
+                {path:'electric',component:()=>import('../view/index/tapbar/bars/Electric')},
+                {path:'life',component:()=>import('../view/index/tapbar/bars/Life')},
+                {path:'makeup',component:()=>import('../view/index/tapbar/bars/Makeup')},
+            ]
+        },
+        {
+            path:'/classify',
+            name:'Classify',
+            component:()=>import('../view/classify/Classify')
+        },
+        {
             path:'/find',
             name:'Find',
             component:()=>import('../view/find/Find')
         },
         {
-            path:'/video',
-            name:'Video',
-            component:()=>import('../view/video/Video')
+            path:'/car',
+            name:'Car',
+            component:()=>import('../view/car/Car')
         },
         {
             path:'/mine',
             name:'Mine',
             component:()=>import('../view/mine/Mine')
         },
-        {
-            path:'/friend',
-            name:'Friend',
-            component:()=>import('../view/friend/Friend')
-        },
-        {
-            path:'/account',
-            name:'Account',
-            component:()=>import('../view/account/Account')
-        },
-        {
-            path:'/play',
-            name:'Play',
-            component:()=>import('../components/Play')
-        }
+        
     ],
     linkActiveClass:'active'
 })

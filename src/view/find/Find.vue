@@ -1,15 +1,15 @@
 <template>
-  <div class="friend">
-    <Header1></Header1>
+  <div class="mine">
+    <Header2 title="分类"></Header2>
   </div>
 </template>
 
 <script>
-import Header1 from "../../components/Header1"
+import Header2 from "../../components/Header2"
 export default {
-  name:'Friend',
+  name:'Mine',
   components:{
-    Header1
+    Header2
   }
 }
 </script>

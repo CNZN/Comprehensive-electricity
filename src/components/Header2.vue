@@ -3,7 +3,7 @@
     <p>
       <i id="i1" class="el-icon-cloudy"></i>
       {{ title }}
-      <i id="i2" class="el-icon-s-operation" @click="toPlay"></i>
+      <i id="i2" class="el-icon-camera-solid"></i>
     </p>
   </div>
 </template>
@@ -20,11 +20,7 @@ export default {
     },
   },
   methods:{
-    toPlay(){
-      this.$router.push({
-        path:'/play'
-      })
-    }
+    
   }
 };
 </script>
@@ -38,7 +34,7 @@ p {
   font-weight: 600;
   color: white;
   font-size: 18px;
-  background: #e4463b;
+  background: #EBC344;
   display: flex;
   justify-content: space-between;
   align-items: center;

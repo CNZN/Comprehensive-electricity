@@ -1,34 +1,34 @@
 <template>
   <div class="footer">
     <ul>
-      <router-link tag="li" to="/find">
+      <router-link tag="li" to="/index">
         <div class="box">
           <van-icon class="icon" name="smile" />
+          <span>首页</span>
+        </div>
+      </router-link>
+      <router-link tag="li" to="/find">
+        <div class="box">
+          <van-icon class="icon" name="play-circle" />
           <span>发现</span>
         </div>
       </router-link>
-      <router-link tag="li" to="/video">
+      <router-link tag="li" to="/classify">
         <div class="box">
-          <van-icon class="icon" name="play-circle" />
-          <span>视频</span>
+          <van-icon class="icon" name="music" />
+          <span>分类</span>
+        </div>
+      </router-link>
+      <router-link tag="li" to="/car">
+        <div class="box">
+          <van-icon class="icon" name="friends" />
+          <span>购物车</span>
         </div>
       </router-link>
       <router-link tag="li" to="/mine">
         <div class="box">
-          <van-icon class="icon" name="music" />
-          <span>我的</span>
-        </div>
-      </router-link>
-      <router-link tag="li" to="/friend">
-        <div class="box">
-          <van-icon class="icon" name="friends" />
-          <span>朋友</span>
-        </div>
-      </router-link>
-      <router-link tag="li" to="/account">
-        <div class="box">
           <van-icon class="icon" name="manager" />
-          <span>账号</span>
+          <span>我的</span>
         </div>
       </router-link>
     </ul>

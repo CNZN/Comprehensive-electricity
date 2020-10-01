@@ -10,7 +10,7 @@
           placeholder="请输入搜索关键词"
         />
       </div>
-      <i id="i2" class="el-icon-s-operation" @click="toPlay"></i>
+      <i id="i2" class="el-icon-camera-solid"></i>
     </div>
   </div>
 </template>
@@ -27,11 +27,7 @@ export default {
     };
   },
   methods: {
-    toPlay() {
-      this.$router.push({
-        path: "/play",
-      });
-    },
+    
   },
   components: {},
   mounted() {},
