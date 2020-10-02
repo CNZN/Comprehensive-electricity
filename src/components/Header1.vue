@@ -23,7 +23,7 @@ Vue.use(Search);
 export default {
   data() {
     return {
-      value: "搜索",
+      value: "",
     };
   },
   methods: {

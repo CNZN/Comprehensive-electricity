@@ -16,7 +16,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "我的音乐",
+      default: "购物",
     },
   },
   methods:{

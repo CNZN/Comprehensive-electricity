@@ -90,6 +90,7 @@
 <script>
 import Header1 from "../../components/Header1";
 import Lunbo from "./detail/Lunbo";
+
 import Grid from "./detail/Grid";
 import Tapbar from "./tapbar/Tapbar"
 export default {
