@@ -61,7 +61,10 @@ export default {
       });
     },
     todetail(id) {
-      alert(id);
+      // alert(id);
+      this.$router.push({
+        path:'/detail/'+id
+      })
     },
   },
   created() {

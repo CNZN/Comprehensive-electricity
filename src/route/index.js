@@ -37,7 +37,11 @@ const router = new VueRouter({
             name:'Mine',
             component:()=>import('../view/mine/Mine')
         },
-        
+        {
+            path:"/detail/:id",
+            name:'Detail',
+            component:()=>import('../components/Detail')
+        }
     ],
     linkActiveClass:'active'
 })
