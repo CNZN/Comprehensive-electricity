@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <ul>
-      <router-link tag="li" to="/index">
+      <router-link tag="li" to="/index/select">
         <div class="box">
           <van-icon class="icon" name="smile" />
           <span>首页</span>
@@ -42,6 +42,7 @@ export default {};
 
 <style lang="scss" scoped>
 ul {
+  z-index: 0;
   position: fixed;
   background: white;
   bottom: 0;

@@ -5,6 +5,10 @@ const router = new VueRouter({
     mode:'history',
     routes:[
         {
+            path:"/",
+            redirect:"/index/select",
+        },
+        {
             path:'/index',
             name:'Index',
             component:()=>import('../view/index/Index'),

@@ -57,7 +57,23 @@
     </div>
     <!-- 登陆后 -->
     <div class="after" v-if="flag == 'after'">
-      
+      <van-swipe-cell>
+        <van-card
+          :desc= uname
+          title="用户"
+          class="goods-card"
+          thumb="https://img.yzcdn.cn/vant/cat.jpeg"
+        />
+        <template #right>
+          <van-button
+            square
+            text="退出"
+            type="danger"
+            class="delete-button"
+            @click="quit"
+          />
+        </template>
+      </van-swipe-cell>
     </div>
   </div>
 </template>
@@ -65,6 +81,10 @@
 <script>
 import Header2 from "../../components/Header2";
 import { Dialog } from "vant";
+import { mapMutations } from "vuex";
+import Vue from "vue";
+import { SwipeCell } from "vant";
+Vue.use(SwipeCell);
 export default {
   name: "Account",
   components: {
@@ -77,9 +97,17 @@ export default {
       username2: "",
       password2: "",
       flag: "login",
+      uname:'',
     };
   },
+  created() {
+    if (localStorage.getItem("status") == 3) {
+      this.flag = "after";
+    }
+    this.uname = localStorage.getItem('username')
+  },
   methods: {
+    ...mapMutations(["name"]),
     onSubmit1(values) {
       console.log("submit", values);
       var username = this.username1;
@@ -88,9 +116,16 @@ export default {
         if (res.code === 20000) {
           Dialog({ message: res.msg });
           this.flag = "after";
+          this.name(this.username1);
+          localStorage.setItem("status", 3);
+          localStorage.setItem("username", username);
+        } else {
+          localStorage.setItem("status", 2);
+          localStorage.setItem("username", '');
         }
       });
     },
+    // 注册
     onSubmit2(values) {
       console.log("submit", values);
       var username = this.username2;
@@ -108,6 +143,26 @@ export default {
     tologin() {
       this.flag = "login";
     },
+    quit() {
+      Dialog.confirm({
+        title: "标题",
+        message: "弹窗内容",
+      })
+        .then(() => {
+          localStorage.setItem("status", 2);
+          this.flag = "login";
+          this.$message({
+            type: "标题",
+            message: "成功退出",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消",
+          });
+        });
+    },
   },
 };
 </script>
@@ -124,5 +179,13 @@ h1 {
   font-size: 15px;
   color: red;
   font-weight: 400;
+}
+.goods-card {
+  margin: 0;
+  background-color: white;
+}
+
+.delete-button {
+  height: 100%;
 }
 </style>

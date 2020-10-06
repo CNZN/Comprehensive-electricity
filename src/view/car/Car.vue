@@ -1,23 +1,28 @@
 <template>
   <div class="car">
-    <van-submit-bar :price="3050" button-text="提交订单" @submit="onSubmit">
-      <van-checkbox v-model="checked">全选</van-checkbox>
-      <!-- <template #tip>
-        你的收货地址不支持同城送,
-        <span @click="onClickEditAddress">修改地址</span>
-      </template> -->
-    </van-submit-bar>
+    <van-tabs v-model="active">
+      <van-tab title="全部">全部</van-tab>
+      <van-tab title="降价">降价</van-tab>
+      <van-tab title="常买">常买</van-tab>
+      <van-tab title="分类">分类</van-tab>
+    </van-tabs>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import { SubmitBar } from "vant";
+import { Tab, Tabs } from "vant";
 
-Vue.use(SubmitBar);
+Vue.use(Tab);
+Vue.use(Tabs);
 export default {
   name: "Car",
   components: {},
+  data() {
+    return {
+      active: 2,
+    };
+  },
 };
 </script>
 

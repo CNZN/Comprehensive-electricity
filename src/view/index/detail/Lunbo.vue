@@ -2,16 +2,16 @@
   <div class="main">
     <van-swipe :loop="true" :width="375" :height="170" :autoplay="2000" indicator-color="#333333">
       <van-swipe-item>
-        <img src="../../../assets/images/item0.jpg" alt="">
+        <img src="../../../assets/images/item4.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="../../../assets/images/item1.jpg" alt="">
+        <img src="../../../assets/images/item5.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="../../../assets/images/item2.jpg" alt="">
+        <img src="../../../assets/images/item6.jpg" alt="">
       </van-swipe-item>
       <van-swipe-item>
-        <img src="../../../assets/images/item3.jpg" alt="">
+        <img src="../../../assets/images/item7.jpg" alt="">
       </van-swipe-item>
     </van-swipe>
   </div>

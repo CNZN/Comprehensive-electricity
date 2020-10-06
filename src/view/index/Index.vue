@@ -1,5 +1,5 @@
 <template>
-  <div class="friend" @scroll="scrollEvent" ref="scrollDiv">
+  <div class="friend"  ref="scrollDiv">
     <Header1></Header1>
     <Lunbo></Lunbo>
     <Grid></Grid>
@@ -7,7 +7,7 @@
       <div class="cutdown">
         <div class="cut1">
           京东秒杀
-          <van-count-down :time="time" style="margin-left:20px;">
+          <van-count-down :time="time" style="margin-left: 20px">
             <template #default="timeData">
               <span class="block">{{ timeData.hours }}</span>
               <span class="colon">:</span>
@@ -40,15 +40,17 @@
 
       <div class="find">
         <p>发现好货</p>
-        <p style="color:#41E189;font-size:12px;margin-top:10px;">品质新生活</p>
+        <p style="color: #41e189; font-size: 12px; margin-top: 10px">
+          品质新生活
+        </p>
         <van-grid :border="true" :column-num="2" :clickable="true">
-            <van-grid-item>
-              <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-            </van-grid-item>
-            <van-grid-item>
-              <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-            </van-grid-item>
-          </van-grid>
+          <van-grid-item>
+            <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
+          </van-grid-item>
+          <van-grid-item>
+            <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
+          </van-grid-item>
+        </van-grid>
       </div>
     </div>
 
@@ -56,64 +58,60 @@
       <div>
         <p class="bp1">品牌秒杀</p>
         <p class="bp2">品质好物秒</p>
-        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="">
+        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="" />
       </div>
       <div>
         <p class="bp1">品质秒杀</p>
         <p class="bp3">低至1588</p>
-        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="">
+        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="" />
       </div>
       <div>
         <p class="bp1">新品首发</p>
         <p class="bp4">华为智慧屏</p>
-        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="">
+        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="" />
       </div>
       <div>
         <p class="bp1">排行榜</p>
         <p class="bp5">跟榜购好物</p>
-        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="">
+        <img src="https://img.yzcdn.cn/vant/apple-1.jpg" alt="" />
       </div>
     </div>
 
     <Tapbar></Tapbar>
     <router-view></router-view>
-
-    <div class="totop" ref="top">
-      <van-icon name="arrow-up" :size="30"/>
-    </div>
+    <Totop></Totop>
 
     <div class="theLast"></div>
-
   </div>
 </template>
 
 <script>
 import Header1 from "../../components/Header1";
 import Lunbo from "./detail/Lunbo";
-
+import Totop from "../../components/Totop";
 import Grid from "./detail/Grid";
-import Tapbar from "./tapbar/Tapbar"
+import Tapbar from "./tapbar/Tapbar";
 export default {
   name: "Friend",
   components: {
     Header1,
     Lunbo,
     Grid,
-    Tapbar
+    Tapbar,
+    Totop,
   },
   data() {
     return {
+      data: [],
       time: 300 * 60 * 60 * 1000,
     };
   },
-  methods:{
-    scrollEvent () {
-      console.log(this.$refs.scrollDiv.scrollTop);
-    },
+  methods: {
+    // scrollEvent() {
+    //   console.log(this.$refs.scrollDiv.scrollTop);
+    // },
   },
-  created(){
-    
-  }
+  created() {},
 };
 </script>
 
@@ -145,78 +143,78 @@ export default {
       justify-content: center;
       align-items: center;
     }
-    .cut2{
-      .cut21{
+    .cut2 {
+      .cut21 {
         // display: flex;
         font-size: 12px;
-        .p2{
+        .p2 {
           text-decoration: line-through;
         }
       }
     }
   }
-  .find{
+  .find {
     width: 50%;
     display: flex;
     flex-direction: column;
   }
 }
-.brand{
+.brand {
   display: flex;
-  div{
+  div {
     width: 25%;
     display: flex;
     flex-direction: column;
-    img{
+    img {
       width: 100%;
     }
-    .bp1{
+    .bp1 {
       font-size: 16px;
       color: black;
       text-align: center;
     }
   }
 }
-.bp2{
+.bp2 {
   font-size: 12px;
-  color: #F99104;
+  color: #f99104;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.bp3{
+.bp3 {
   font-size: 12px;
-  color: #F73118;
+  color: #f73118;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.bp4{
+.bp4 {
   font-size: 12px;
-  color: #2CAAFD;
+  color: #2caafd;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.bp5{
+.bp5 {
   font-size: 12px;
-  color: #A753EE;
+  color: #a753ee;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.theLast{
+.theLast {
   height: 50px;
 }
-.totop{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #eeeeee;
-  position: fixed;
-  bottom:60px;
-  right: 10px;
-  text-align: center;
-  line-height: 60px;
-}
+// .totop {
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   background: #eeeeee;
+//   position: fixed;
+//   bottom: 60px;
+//   right: 10px;
+//   text-align: center;
+//   line-height: 60px;
+// }
 </style>

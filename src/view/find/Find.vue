@@ -1,6 +1,6 @@
 <template>
   <div class="mine">
-    <Header2 title="分类"></Header2>
+    <Header2 title="发现"></Header2>
   </div>
 </template>
 

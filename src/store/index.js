@@ -1,17 +1,20 @@
-import Vue from 'vue' 
+import Vue from 'vue'
 import Vuex from "vuex"
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-    state:{
-        
+    state: {
+        username: '', 
     },
-    getters:{}
+    getters: {}
     ,
-    mutations:{
-       
+    mutations: {
+
+        name(state, pro){
+            state.username = pro
+        }
     },
-    actions:{
+    actions: {
         
     }
 })
