@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 span {
-  font-size: 40px;
+  font-size: 20px;
   display: block;
 }
 </style>

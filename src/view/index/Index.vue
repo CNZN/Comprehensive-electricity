@@ -107,9 +107,7 @@ export default {
     };
   },
   methods: {
-    // scrollEvent() {
-    //   console.log(this.$refs.scrollDiv.scrollTop);
-    // },
+    
   },
   created() {},
 };

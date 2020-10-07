@@ -59,7 +59,7 @@
     <div class="after" v-if="flag == 'after'">
       <van-swipe-cell>
         <van-card
-          :desc= uname
+          :desc="uname"
           title="用户"
           class="goods-card"
           thumb="https://img.yzcdn.cn/vant/cat.jpeg"
@@ -81,7 +81,6 @@
 <script>
 import Header2 from "../../components/Header2";
 import { Dialog } from "vant";
-import { mapMutations } from "vuex";
 import Vue from "vue";
 import { SwipeCell } from "vant";
 Vue.use(SwipeCell);
@@ -97,17 +96,16 @@ export default {
       username2: "",
       password2: "",
       flag: "login",
-      uname:'',
+      uname: "",
     };
   },
   created() {
     if (localStorage.getItem("status") == 3) {
       this.flag = "after";
     }
-    this.uname = localStorage.getItem('username')
+    this.uname = localStorage.getItem("username");
   },
   methods: {
-    ...mapMutations(["name"]),
     onSubmit1(values) {
       console.log("submit", values);
       var username = this.username1;
@@ -116,12 +114,12 @@ export default {
         if (res.code === 20000) {
           Dialog({ message: res.msg });
           this.flag = "after";
-          this.name(this.username1);
           localStorage.setItem("status", 3);
           localStorage.setItem("username", username);
+          this.uname = localStorage.getItem("username");
         } else {
           localStorage.setItem("status", 2);
-          localStorage.setItem("username", '');
+          localStorage.setItem("username", "");
         }
       });
     },
@@ -145,8 +143,8 @@ export default {
     },
     quit() {
       Dialog.confirm({
-        title: "标题",
-        message: "弹窗内容",
+        title: "提示",
+        message: "您确定注销吗",
       })
         .then(() => {
           localStorage.setItem("status", 2);

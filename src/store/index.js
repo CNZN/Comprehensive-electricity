@@ -4,14 +4,16 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        username: '', 
+        goods:[]
     },
     getters: {}
     ,
     mutations: {
-
-        name(state, pro){
-            state.username = pro
+        goods(state,pro){
+            state = JSON.parse(localStorage.getItem('goods'))
+            // if(pro.id==){}
+            state.goods.push(pro)
+            localStorage.setItem('goods',JSON.stringify(state))
         }
     },
     actions: {

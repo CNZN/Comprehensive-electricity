@@ -45,7 +45,22 @@ const router = new VueRouter({
             path:"/detail/:id",
             name:'Detail',
             component:()=>import('../components/Detail')
-        }
+        },
+        {
+            path:"/list",
+            name:'List',
+            component:()=>import('../components/List')
+        },
+        {
+            path:"/search",
+            name:'Search',
+            component:()=>import('../components/Search')
+        },
+        {
+            path:"/result",
+            name:'Result',
+            component:()=>import('../components/Result')
+        },
     ],
     linkActiveClass:'active'
 })

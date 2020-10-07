@@ -85,6 +85,7 @@ export default {
     div {
       margin: 10px 9px;
       width: 100%;
+      font-size: 13px;
       img {
         width: 100%;
       }
@@ -105,6 +106,7 @@ export default {
       .p2 {
         margin-top: 5px;
         margin-bottom: 5px;
+        font-size: 13px;
       }
       .p3 {
         margin-top: 5px;

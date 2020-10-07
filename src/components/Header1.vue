@@ -6,8 +6,10 @@
         <van-search
           v-model="value"
           shape="round"
-          background="#e4463b"
+          background="#ffffff"
           placeholder="请输入搜索关键词"
+          @click="tosearch"
+
         />
       </div>
       <i id="i2" class="el-icon-camera-solid"></i>
@@ -27,7 +29,11 @@ export default {
     };
   },
   methods: {
-    
+    tosearch(){
+      this.$router.push({
+        path:"/search"
+      })
+    }
   },
   components: {},
   mounted() {},
@@ -36,8 +42,8 @@ export default {
 
 <style lang="scss" scoped>
 .box {
-  color: white;
-  background: #e4463b;
+  color: #888888;
+  background: #ffffff;
   height: 45px;
   display: flex;
   justify-content: space-between;
