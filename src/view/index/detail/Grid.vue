@@ -9,23 +9,33 @@
       <van-swipe-item>
         <van-grid :border="true" :column-num="5" :clickable="true">
           <van-grid-item class="main" dot>
-            <div class="box"  style="background: #41DE14"><p class="inner">超市</p></div>
+            <div class="box" style="background: #41de14">
+              <p class="inner">超市</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box"  style="background: #F6412D"><p class="inner">数码</p></div>
+            <div class="box" style="background: #f6412d">
+              <p class="inner">数码</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box" style="background: #A753EE"><p class="inner">服饰</p></div>
+            <div class="box" style="background: #a753ee">
+              <p class="inner">服饰</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box" style="background: #F6412D"><p class="inner">生鲜</p></div>
+            <div class="box" style="background: #f6412d">
+              <p class="inner">生鲜</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box" style="background: #2CAAFD"><p class="inner">到家</p></div>
+            <div class="box" style="background: #2caafd">
+              <p class="inner">到家</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
         </van-grid>
@@ -37,19 +47,27 @@
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box" style="background: pink"><p class="inner">京豆</p></div>
+            <div class="box" style="background: pink">
+              <p class="inner">京豆</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box" style="background: #F86B3E"><p class="inner">领卷</p></div>
+            <div class="box" style="background: #f86b3e">
+              <p class="inner">领卷</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box"  style="background: #2F3D78"><p class="inner">借钱</p></div>
+            <div class="box" style="background: #2f3d78">
+              <p class="inner">借钱</p>
+            </div>
             <p class="outer">京东超市</p>
           </van-grid-item>
           <van-grid-item class="main">
-            <div class="box"  style="background: #41E189"><p class="inner">会员</p></div>
+            <div class="box" style="background: #41e189">
+              <p class="inner">会员</p>
+            </div>
             <p class="outer">PLUS会员</p>
           </van-grid-item>
         </van-grid>
@@ -111,7 +129,11 @@ import { Grid, GridItem } from "vant";
 
 Vue.use(Grid);
 Vue.use(GridItem);
-export default {};
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -122,7 +144,7 @@ export default {};
   justify-content: center;
   align-content: center;
   font-size: 12px;
-  
+
   .box {
     border-radius: 50%;
     background: skyblue;

@@ -3,31 +3,31 @@
     <ul>
       <router-link tag="li" to="/index/select">
         <div class="box">
-          <van-icon class="icon" name="smile" />
+          <van-icon class="icon" name="wap-home-o" />
           <span>首页</span>
         </div>
       </router-link>
       <router-link tag="li" to="/find">
         <div class="box">
-          <van-icon class="icon" name="play-circle" />
+          <van-icon class="icon" name="friends-o" />
           <span>发现</span>
         </div>
       </router-link>
       <router-link tag="li" to="/classify">
         <div class="box">
-          <van-icon class="icon" name="music" />
+          <van-icon class="icon" name="apps-o" />
           <span>分类</span>
         </div>
       </router-link>
       <router-link tag="li" to="/car">
         <div class="box">
-          <van-icon class="icon" name="friends" />
+          <van-icon class="icon" name="shopping-cart-o" />
           <span>购物车</span>
         </div>
       </router-link>
       <router-link tag="li" to="/mine">
         <div class="box">
-          <van-icon class="icon" name="manager" />
+          <van-icon class="icon" name="manager-o" />
           <span>我的</span>
         </div>
       </router-link>
@@ -45,7 +45,7 @@ ul {
   z-index: 0;
   position: fixed;
   background: white;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   width: 100%;
   height: 50px;
@@ -60,13 +60,13 @@ ul {
       color: red;
       font-size: 18px;
     }
-    .box{
+    .box {
       font-size: 12px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      .icon{
+      .icon {
         font-size: 24px;
       }
     }

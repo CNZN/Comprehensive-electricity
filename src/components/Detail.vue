@@ -13,9 +13,20 @@
     </div>
     <!-- 价格 标题 -->
     <div class="detail">
-      <p>价格:{{ item.price }}</p>
-      <p>产品名:{{ item.title }}</p>
-      <p>产品描述:{{ item.desc }}</p>
+      <p class="p1">￥{{ item.price }}</p>
+      <p class="p2">产品名:{{ item.title }}</p>
+      <p class="p3">
+        <span class="p31">自营</span>
+        <span class="p32">{{ item.desc }}</span>
+      </p>
+      <van-button type="primary" size="large" class="btn"
+        @click="toclassify">京东超市！一站式圈生活好物！</van-button
+      >
+      <van-tabs @click="onClick">
+        <van-tab title="评论">内容 1</van-tab>
+        <van-tab title="详情">内容 2</van-tab>
+      </van-tabs>
+      <div style="heigth: 50px"></div>
     </div>
     <!-- 弹出框 -->
     <van-action-sheet v-model="show" title="详情">
@@ -62,6 +73,12 @@ import { GoodsAction, GoodsActionIcon, GoodsActionButton } from "vant";
 import { mapMutations } from "vuex";
 import { Toast } from "vant";
 import { Stepper } from "vant";
+import { getToken } from "../utils/auth";
+import { Dialog } from "vant";
+import { Tab, Tabs } from "vant";
+
+Vue.use(Tab);
+Vue.use(Tabs);
 Vue.use(Stepper);
 Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);
@@ -83,6 +100,7 @@ export default {
       show: false,
       img: "",
       value: 1,
+      active: 1,
     };
   },
   methods: {
@@ -108,16 +126,46 @@ export default {
       Toast("请选择");
     },
     shownum() {
-      console.log(this.value);
+      // console.log(this.value);
     },
     ...mapMutations(["goods"]),
     add() {
-      var obj = {};
-      obj.id = this.id;
-      obj.num = this.value;
-      this.goods(obj);
-      this.show = false;Toast("添加成功");
+      if (getToken()) {
+        var obj = {};
+        obj.id = this.id;
+        obj.num = this.value;
+        this.goods(obj);
+        this.show = false;
+        Toast("添加成功");
+      } else {
+        Dialog.confirm({
+          title: "提示",
+          message: "您还未登录，需要现在登陆吗??",
+        })
+          .then(() => {
+            this.$router.push({
+              path: "/mine",
+              // query: {
+              //   id: id,
+              // },
+            });
+          })
+          .catch(() => {
+            this.$message({
+              type: "info",
+              message: "已取消",
+            });
+          });
+      }
     },
+    onClick(name, title) {
+      Toast(title);
+    },
+    toclassify(){
+      this.$router.push({
+        path:'/classify'
+      })
+    }
   },
   created() {
     (this.id = this.$route.params.id), this.getsomeone();
@@ -135,11 +183,42 @@ export default {
 }
 .lunbo {
   img {
-    width: 90%;
-    height: 305px;
+    width: 99%;
+    border-radius: 5px;
   }
 }
 .content {
   padding: 16px 16px 160px;
+}
+.datail {
+  margin: 5px 10px;
+  font-size: 14px;
+  .p1 {
+    font-size: 22px;
+    color: #e51c23;
+  }
+  .p2 {
+    color: #e51c23;
+    font-size: 12px;
+    margin: 5px 0;
+  }
+  .p3 {
+    font-size: 13px;
+    line-height: 19px;
+    margin: 0 0 20px 0;
+    .p31 {
+      display: inline-block;
+      color: white;
+      background: #e51c23;
+      padding: 0 5px;
+      margin: 0 5px 0 0;
+    }
+  }
+  .btn {
+    background: #f8520d;
+    height: 35px;
+    font-size: 14px;
+    border: none;
+  }
 }
 </style>

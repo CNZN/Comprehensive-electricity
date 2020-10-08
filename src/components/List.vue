@@ -64,17 +64,17 @@ export default {
     //   // 异步更新数据
     //   // setTimeout 仅做示例，真实场景中一般为 ajax 请求
       setTimeout(() => {
-    //     for (let i = 0; i < 10; i++) {
-    //       this.datalist.push(this.datalist.length + 1);
-    //     }
+        for (let i = 0; i < 10; i++) {
+          this.datalist.push(this.datalist.length + 1);
+        }
 
     //     // 加载状态结束
         this.loading = false;
 
-    //     // 数据全部加载完成
-    //     if (this.datalist.length >= 40) {
+        // 数据全部加载完成
+        if (this.datalist.length >= 40) {
           this.finished = true;
-    //     }
+        }
       }, 1000);
     },
     getlist() {
@@ -109,7 +109,7 @@ ul {
     .box {
       font-size: 12px;
       .p1 {
-          width: 80%;
+        width: 80%;
         line-height: 20px;
         overflow: hidden;
         white-space: nowrap;
@@ -118,6 +118,7 @@ ul {
       .p2 {
         color: #e51c23;
         font-size: 12px;
+        
         .sp2 {
           display: inline-block;
           width: 45px;
@@ -178,10 +179,11 @@ ul {
     }
   }
 }
-span{margin-left: 5px;margin-top: 1px;margin-bottom: 1px;}
+span{margin-left: 5px;margin-top: 1px;margin-bottom: 1px;border-radius: 3px;}
 img {
   width: 100px;
   height: 100px;
   margin-right: 10px;
+  border-radius: 6px;
 }
 </style>

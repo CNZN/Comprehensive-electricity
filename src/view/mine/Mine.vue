@@ -74,20 +74,53 @@
           />
         </template>
       </van-swipe-cell>
+      <van-grid :border="true" :clickable="true">
+        <van-grid-item icon="star-o" text="商品关注" />
+        <van-grid-item icon="like-o" text="店铺关注" />
+        <van-grid-item icon="thumb-circle-o" text="喜欢的内容" />
+        <van-grid-item icon="underway-o" text="浏览记录" />
+      </van-grid>
+      <p></p>
+      <van-grid :border="true" :clickable="true" style="margin-top: 20px">
+        <van-grid-item icon="gem-o" text="白条" />
+        <van-grid-item icon="gift-o" text="金条" />
+        <van-grid-item icon="point-gift-o" text="优惠卷" />
+        <van-grid-item icon="balance-list-o" text="金豆" />
+      </van-grid>
+      <p class="p1">工具与服务</p>
+      <van-grid :column-num="3" style="margin-top: 10px">
+        <van-grid-item
+          v-for="value in 6"
+          :key="value"
+          icon="photo-o"
+          text="主题换肤"
+        />
+      </van-grid>
+      <p class="p2">
+        <van-icon name="like" style="color:pink;"/>
+        为你推荐
+      </p>
+      <List></List>
     </div>
   </div>
 </template>
 
 <script>
 import Header2 from "../../components/Header2";
+import { getToken, setToken, removeToken } from "../../utils/auth";
 import { Dialog } from "vant";
 import Vue from "vue";
 import { SwipeCell } from "vant";
+import { Grid, GridItem } from "vant";
+import List from "../../components/List";
+Vue.use(Grid);
+Vue.use(GridItem);
 Vue.use(SwipeCell);
 export default {
   name: "Account",
   components: {
     Header2,
+    List,
   },
   data() {
     return {
@@ -104,6 +137,9 @@ export default {
       this.flag = "after";
     }
     this.uname = localStorage.getItem("username");
+    if (getToken()) {
+      this.flag = "after";
+    }
   },
   methods: {
     onSubmit1(values) {
@@ -114,6 +150,7 @@ export default {
         if (res.code === 20000) {
           Dialog({ message: res.msg });
           this.flag = "after";
+          setToken(username);
           localStorage.setItem("status", 3);
           localStorage.setItem("username", username);
           this.uname = localStorage.getItem("username");
@@ -149,6 +186,7 @@ export default {
         .then(() => {
           localStorage.setItem("status", 2);
           this.flag = "login";
+          removeToken();
           this.$message({
             type: "标题",
             message: "成功退出",
@@ -185,5 +223,16 @@ h1 {
 
 .delete-button {
   height: 100%;
+}
+.p1 {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.p2 {
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background: #efefef;
 }
 </style>

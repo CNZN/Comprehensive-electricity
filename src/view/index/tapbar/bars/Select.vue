@@ -88,6 +88,7 @@ export default {
       font-size: 13px;
       img {
         width: 100%;
+        border-radius: 5px;
       }
       .p1 {
         .jingdong {
@@ -136,9 +137,11 @@ export default {
           border:1px solid #909090 ;
           border-radius: 10px;
           line-height: 20px;
+          text-align: center;
         }
       }
     }
   }
 }
+span{border-radius: 3px;}
 </style>

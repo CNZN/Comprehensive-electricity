@@ -1,43 +1,52 @@
 <template>
-  <div class="infinite-list-wrapper" style="overflow:auto">
-    <ul
-      class="list"
-      v-infinite-scroll="load"
-      infinite-scroll-disabled="disabled">
-      <li v-for="i in count" class="list-item" :key="i">{{ i }}</li>
-    </ul>
-    <p v-if="loading">加载中...</p>
-    <p v-if="noMore">没有更多了</p>
+  <div class="happy">
+    <van-address-edit
+      
+      show-postal
+      show-delete
+      show-set-default
+      show-search-result
+      :search-result="searchResult"
+      :area-columns-placeholder="['请选择', '请选择', '请选择']"
+      @save="onSave"
+      @delete="onDelete"
+      @change-detail="onChangeDetail"
+    />
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        count: 10,
-        loading: false
+import Vue from "vue";
+import { AddressEdit } from "vant";
+import { Toast } from "vant";
+Vue.use(AddressEdit);
+export default {
+  data() {
+    return {
+      searchResult: [],
+    };
+  },
+  methods: {
+    onSave() {
+      Toast("save");
+    },
+    onDelete() {
+      Toast("delete");
+    },
+    onChangeDetail(val) {
+      if (val) {
+        this.searchResult = [
+          {
+            name: "黄龙万科中心",
+            address: "杭州市西湖区",
+          },
+        ];
+      } else {
+        this.searchResult = [];
       }
     },
-    computed: {
-      noMore () {
-        return this.count >= 20
-      },
-      disabled () {
-        return this.loading || this.noMore
-      }
-    },
-    methods: {
-      load () {
-        this.loading = true
-        setTimeout(() => {
-          this.count += 2
-          this.loading = false
-        }, 2000)
-      }
-    }
-  }
+  },
+};
 </script>
 <style lang="scss">
-
 </style>
