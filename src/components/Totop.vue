@@ -20,8 +20,8 @@ export default {
       if (this.scrollTop > 500) {
         this.goTopShow = true;
         setTimeout(function () {
-          console.log(val);
-        }, 500000);
+          console.log(val-val);
+        }, 1);
       } else {
         this.goTopShow = false;
       }
@@ -43,7 +43,7 @@ export default {
       cancelAnimationFrame(timer);
       timer = requestAnimationFrame(function fn() {
         if (_that.scrollTop > 0) {
-          _that.scrollTop -= 50;
+          _that.scrollTop -= 150;
           document.body.scrollTop = document.documentElement.scrollTop =
             _that.scrollTop;
           timer = requestAnimationFrame(fn);

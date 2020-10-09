@@ -19,14 +19,17 @@
         <span class="p31">自营</span>
         <span class="p32">{{ item.desc }}</span>
       </p>
-      <van-button type="primary" size="large" class="btn"
-        @click="toclassify">京东超市！一站式圈生活好物！</van-button
+      <van-button type="primary" size="large" class="btn" @click="toclassify"
+        >京东超市！一站式圈生活好物！</van-button
       >
+      
       <van-tabs @click="onClick">
         <van-tab title="评论">内容 1</van-tab>
-        <van-tab title="详情">内容 2</van-tab>
+        <van-tab title="详情">
+          <List></List>
+        </van-tab>
       </van-tabs>
-      <div style="heigth: 50px"></div>
+      
     </div>
     <!-- 弹出框 -->
     <van-action-sheet v-model="show" title="详情">
@@ -64,10 +67,14 @@
         @click="onClickButton"
       />
     </van-goods-action>
+    <Totop></Totop>
+    <div class="bottom"></div>
   </div>
 </template>
 <script>
 import Vue from "vue";
+import List from "../components/List";
+import Totop from "../components/Totop";
 import { Lazyload } from "vant";
 import { GoodsAction, GoodsActionIcon, GoodsActionButton } from "vant";
 import { mapMutations } from "vuex";
@@ -86,6 +93,7 @@ Vue.use(GoodsActionIcon);
 Vue.use(Lazyload);
 
 export default {
+  components: { List, Totop },
   data() {
     return {
       id: "",
@@ -161,11 +169,11 @@ export default {
     onClick(name, title) {
       Toast(title);
     },
-    toclassify(){
+    toclassify() {
       this.$router.push({
-        path:'/classify'
-      })
-    }
+        path: "/classify",
+      });
+    },
   },
   created() {
     (this.id = this.$route.params.id), this.getsomeone();
@@ -220,5 +228,8 @@ export default {
     font-size: 14px;
     border: none;
   }
+}
+.bottom{
+  height: 50px;
 }
 </style>

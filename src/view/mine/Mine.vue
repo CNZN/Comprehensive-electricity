@@ -10,15 +10,28 @@
           name="用户名"
           label="用户名"
           placeholder="用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]"
+          :rules="[
+            {
+              required: true,
+              pattern: /^[a-zA-Z]{4,10}$/,
+              message: '用户名为字母4~10位',
+            },
+          ]"
         />
+
         <van-field
           v-model="password1"
           type="password"
           name="密码"
           label="密码"
           placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          :rules="[
+            {
+              required: true,
+              pattern: /^[a-zA-Z]\w{5,17}$/,
+              message: '密码长度要在6~18位之间,且必须以字母开头！',
+            },
+          ]"
         />
         <div style="margin: 16px">
           <span class="span1" @click="toregister">现在去注册</span>
@@ -37,7 +50,13 @@
           name="用户名"
           label="用户名"
           placeholder="用户名"
-          :rules="[{ required: true, message: '请填写用户名' }]"
+          :rules="[
+            {
+              required: true,
+              pattern: /^[a-zA-Z]{4,10}$/,
+              message: '用户名为字母4~10位',
+            },
+          ]"
         />
         <van-field
           v-model="password2"
@@ -45,7 +64,13 @@
           name="密码"
           label="密码"
           placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
+          :rules="[
+            {
+              required: true,
+              pattern: /^[a-zA-Z]\w{5,17}$/,
+              message: '密码长度要在6~18位之间,且必须以字母开头！',
+            },
+          ]"
         />
         <div style="margin: 16px">
           <span class="span2" @click="tologin">已注册去登陆</span>
@@ -97,10 +122,11 @@
         />
       </van-grid>
       <p class="p2">
-        <van-icon name="like" style="color:pink;"/>
+        <van-icon name="like" style="color: pink" />
         为你推荐
       </p>
       <List></List>
+      <Totop></Totop>
     </div>
   </div>
 </template>
@@ -113,6 +139,7 @@ import Vue from "vue";
 import { SwipeCell } from "vant";
 import { Grid, GridItem } from "vant";
 import List from "../../components/List";
+import Totop from "../../components/Totop"
 Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(SwipeCell);
@@ -121,15 +148,19 @@ export default {
   components: {
     Header2,
     List,
+    Totop
   },
   data() {
     return {
+      // 登录
       username1: "",
       password1: "",
+      // 注册
       username2: "",
       password2: "",
       flag: "login",
       uname: "",
+      value1: "",
     };
   },
   created() {

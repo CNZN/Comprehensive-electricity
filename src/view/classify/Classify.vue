@@ -90,7 +90,6 @@ export default {
       });
     },
     todetail(id) {
-      // alert(id);
       this.$router.push({
         path:'/detail/'+id
       })
