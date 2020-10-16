@@ -14,6 +14,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 Vue.use(Vant);
 Vue.use(MintUI)
 Vue.use(ElementUI);

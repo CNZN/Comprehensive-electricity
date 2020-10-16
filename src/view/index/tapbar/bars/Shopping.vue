@@ -1,68 +1,85 @@
 <template>
   <div class="shopping">
-    <el-row>
-      <el-col
-        :span="8"
-        v-for="(o, index) in 2"
-        :key="o"
-        :offset="index > 0 ? 2 : 0"
-      >
-        <el-card :body-style="{ padding: '0px' }">
-          <img
-            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-            class="image"
-          />
-          <div style="padding: 14px">
-            <span>好吃的汉堡</span>
-            <div class="bottom clearfix">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button>
-            </div>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+    <h2>vue中插入Echarts示例</h2>
+    <div id="chart_example"></div>
   </div>
 </template>
 
 <script>
+// import echarts from "echarts";
 export default {
   data() {
-    return {
-      currentDate: new Date(),
-    };
+    return {};
   },
+  mounted() {
+    let myChart = this.$echarts.init(document.getElementById("chart_example"));
+    let option = {
+      color: ["#f44"],
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow",
+        },
+      },
+      xAxis: [
+        {
+          type: "category",
+          data: [
+            "1月",
+            "2月",
+            "3月",
+            "4月",
+            "5月",
+            "6月",
+            "7月",
+            "8月",
+            "9月",
+            "10月",
+            "11月",
+            "12月",
+          ],
+          axisTick: {
+            alignWithLabel: true,
+          },
+        },
+      ],
+      yAxis: [
+        {
+          type: "value",
+        },
+      ],
+      series: [
+        {
+          name: "每月花费",
+          type: "bar",
+          barWidth: "60%",
+          data: [1100, 666, 444, 858, 654, 236, 645, 546, 846, 225, 547, 356],
+        },
+      ],
+    };
+    myChart.setOption(option);
+
+    //建议加上以下这一行代码，不加的效果图如下（当浏览器窗口缩小的时候）。超过了div的界限（红色边框）
+    window.addEventListener("resize", function () {
+      myChart.resize();
+    });
+  },
+  methods: {},
+  watch: {},
+  created() {},
 };
 </script>
 
 <style lang="scss" scoped>
-.time {
-  font-size: 13px;
-  color: #999;
+h2 {
+  text-align: center;
+  padding: 30px;
+  font-size: 18px;
 }
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
-}
-
-.button {
-  padding: 0;
-  float: right;
-}
-
-.image {
-  width: 100%;
-  display: block;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
+#chart_example {
+  width: 90%;
+  height: 200px;
+  border: 1px solid red;
+  margin: 0 10px;
 }
 </style>

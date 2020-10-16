@@ -32,6 +32,7 @@
               <button class="bbbtn">删除</button>
             </li>
             <!-- {{checkgroup}} -->
+            <!-- {{totalprice}} -->
           </ul>
           <van-submit-bar
             :price="totalprice"
