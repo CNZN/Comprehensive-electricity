@@ -22,14 +22,13 @@
       <van-button type="primary" size="large" class="btn" @click="toclassify"
         >京东超市！一站式圈生活好物！</van-button
       >
-      
+
       <van-tabs @click="onClick">
         <van-tab title="评论">内容 1</van-tab>
         <van-tab title="详情">
           <List></List>
         </van-tab>
       </van-tabs>
-      
     </div>
     <!-- 弹出框 -->
     <van-action-sheet v-model="show" title="详情">
@@ -142,6 +141,7 @@ export default {
         var obj = {};
         obj.id = this.id;
         obj.num = this.value;
+        // localStorage.setItem("goods", JSON.stringify(obj));
         this.goods(obj);
         this.show = false;
         Toast("添加成功");
@@ -229,7 +229,7 @@ export default {
     border: none;
   }
 }
-.bottom{
+.bottom {
   height: 50px;
 }
 </style>

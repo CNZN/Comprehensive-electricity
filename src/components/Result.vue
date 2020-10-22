@@ -84,22 +84,6 @@ export default {
   },
   components: {},
   methods: {
-    onSearch(val) {
-      var bb = null;
-      var aa = this.datalist;
-      if (val) {
-        bb = aa.filter((item) => {
-          if (item.title.includes(val)) {
-            return item;
-          }
-        });
-        this.datalist = bb;
-      }
-    },
-    onCancel() {
-      Toast("取消");
-      history.go(-1);
-    },
     getlist() {
       this.$http.get("/allinfo").then((res) => {
         this.datalist = res.goodslist;
@@ -107,6 +91,25 @@ export default {
           item.img = this.baseurl + item.img;
         });
       });
+    },
+    onSearch(val) {
+      var bb = null;
+      // var aa = this.datalist;
+      if (val) {
+        bb = this.datalist.filter((item) => {
+          if (item.desc.includes(val)) {
+            return item;
+          }
+        });
+        this.datalist = bb;
+        console.log(this.datalist, val);
+      } else {
+        this.getlist();
+      }
+    },
+    onCancel() {
+      Toast("取消");
+      history.go(-1);
     },
     todetail(id) {
       this.$router.push({
@@ -131,6 +134,7 @@ export default {
         });
         return aa;
       } else {
+        // console.log(this.datalist);
         var bb = this.datalist;
         bb.sort(function (a, b) {
           return b.price - a.price;

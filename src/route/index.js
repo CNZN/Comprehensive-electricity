@@ -2,68 +2,69 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter)
 const router = new VueRouter({
-    mode:'history',
-    routes:[
+    mode: 'history',
+    routes: [
         {
-            path:"/",
-            redirect:"/index/select",
+            path: "/",
+            redirect: "/index/select",
         },
         {
-            path:'/index',
-            name:'Index',
-            component:()=>import('../view/index/Index'),
-            children:[
-                {path:'select',component:()=>import('../view/index/tapbar/bars/Select')},
-                {path:'happy',component:()=>import('../view/index/tapbar/bars/Happy')},
-                {path:'shopping',component:()=>import('../view/index/tapbar/bars/Shopping')},
-                {path:'electric',component:()=>import('../view/index/tapbar/bars/Electric')},
-                {path:'life',component:()=>import('../view/index/tapbar/bars/Life')},
-                {path:'makeup',component:()=>import('../view/index/tapbar/bars/Makeup')},
+            path: '/index',
+            name: 'Index',
+            component: () => import('../view/index/Index'),
+            children: [
+                { path: 'select', component: () => import('../view/index/tapbar/bars/Select') },
+                { path: 'happy', component: () => import('../view/index/tapbar/bars/Happy') },
+                { path: 'shopping', component: () => import('../view/index/tapbar/bars/Shopping') },
+                { path: 'electric', component: () => import('../view/index/tapbar/bars/Electric') },
+                { path: 'life', component: () => import('../view/index/tapbar/bars/Life') },
+                { path: 'makeup', component: () => import('../view/index/tapbar/bars/Makeup') },
             ]
         },
         {
-            path:'/classify',
-            name:'Classify',
-            component:()=>import('../view/classify/Classify')
+            path: '/classify',
+            name: 'Classify',
+            component: () => import('../view/classify/Classify')
         },
         {
-            path:'/find',
-            name:'Find',
-            component:()=>import('../view/find/Find')
+            path: '/find',
+            name: 'Find',
+            component: () => import('../view/find/Find')
         },
         {
-            path:'/car',
-            name:'Car',
-            component:()=>import('../view/car/Car')
+            path: '/car',
+            name: 'Car',
+            component: () => import('../view/car/Car')
         },
         {
-            path:'/mine',
-            name:'Mine',
-            component:()=>import('../view/mine/Mine')
+            path: '/mine',
+            name: 'Mine',
+            component: () => import('../view/mine/Mine')
         },
         {
-            path:"/detail/:id",
-            name:'Detail',
-            component:()=>import('../components/Detail')
+            path: "/detail/:id",
+            name: 'Detail',
+            component: () => import('../components/Detail')
         },
         {
-            path:"/list",
-            name:'List',
-            component:()=>import('../components/List')
+            path: "/list",
+            name: 'List',
+            component: () => import('../components/List'),
+
         },
         {
-            path:"/search",
-            name:'Search',
-            component:()=>import('../components/Search')
+            path: "/search",
+            name: 'Search',
+            component: () => import('../components/Search')
         },
         {
-            path:"/result",
-            name:'Result',
-            component:()=>import('../components/Result')
+            path: "/result",
+            name: 'Result',
+            component: () => import('../components/Result')
         },
     ],
-    linkActiveClass:'active'
+    linkActiveClass: 'active'
 })
 
 
-export default  router
+export default router

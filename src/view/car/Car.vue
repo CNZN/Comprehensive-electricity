@@ -62,7 +62,7 @@ import { Tab, Tabs } from "vant";
 import { mapState } from "vuex";
 import { getToken } from "../../utils/auth";
 import { Checkbox, CheckboxGroup } from "vant";
-import { Stepper } from "vant";
+import { Stepper, Toast } from "vant";
 
 Vue.use(Stepper);
 Vue.use(Checkbox);
@@ -110,20 +110,25 @@ export default {
     },
   },
   created() {
+    //判断是否登录 是否有token 若无则看不到购物车得二确切信息
+    if (getToken()) {
+      console.log(getToken());
+      this.flag = false;
+    }
+    if (!JSON.parse(localStorage.getItem("goods"))) {
+      Toast("还未添加商品");
+    }
     //取购物车所有商品的id
     this.list = JSON.parse(localStorage.getItem("goods")).goods.map((item) => {
       return item.id;
     });
+    // console.log(this.list);
     //取购物车所有商品对应的数量
     this.items = JSON.parse(localStorage.getItem("goods")).goods.map((item) => {
       return item.num;
     });
     // 将要展示的信息列表 反转
     this.datas = this.items.reverse();
-    //判断是否登录 是否有token 若无则看不到购物车得二确切信息
-    if (getToken()) {
-      this.flag = false;
-    }
     //获取购物车商品
     this.getdetail();
   },
@@ -135,7 +140,7 @@ export default {
     },
     //获取购物车商品
     getdetail() {
-      // console.log(this.list) 数组 ['12','112']
+      // console.log(this.list); //数组 ['12','112']
       this.$http.get(`/someonecar/${this.list}`).then((res) => {
         this.data = res.list.reverse();
         for (var i = 0; i < this.data.length; i++) {
@@ -149,7 +154,6 @@ export default {
     },
     onSubmit() {},
     changeall() {
-      
       this.checkall = !this.checkall;
       if (this.checkall) {
         this.checkgroup = this.data;

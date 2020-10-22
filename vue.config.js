@@ -16,15 +16,15 @@ module.exports = {
             // change xxx-api/login => mock/login
             // detail: https://cli.vuejs.org/config/#devserver-proxy
             [process.env.VUE_APP_BASE_API]: {
-              // target: `http://test.xxx.com`,  // 跨域代理  开发环境   test.xxx.com
-              target: `http://localhost:7777`, // 生产环境       xxx.com
-              // target: `http://127.0.0.1:8888/test/`,  // 开发环境
-              changeOrigin: true,
-              pathRewrite: {
-                ['^' + process.env.VUE_APP_BASE_API]: ''
-              }
+                // target: `http://test.xxx.com`,  // 跨域代理  开发环境   test.xxx.com
+                target: `http://localhost:7777`, // 生产环境       xxx.com
+                // target: `http://127.0.0.1:8888/test/`,  // 开发环境
+                changeOrigin: true,
+                pathRewrite: {
+                    ['^' + process.env.VUE_APP_BASE_API]: ''
+                }
             }
-          }
+        }
     },
     chainWebpack: (config) => {
         // 移除 prefetch 插件(针对生产环境首屏请求数进行优化)
